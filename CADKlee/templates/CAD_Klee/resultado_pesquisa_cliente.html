@@ -1,0 +1,76 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>CADKlee: Resultado da pesquisa</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="{% static 'css/cadkleecss.css' %}">
+</head>
+<body>
+
+    <div class="CADKlee_rectangle_div_red">
+        <h1 class="CADKlee_title">CADKlee</h1>
+    </div>
+
+    <div class="CADKlee_form_login">
+        <h1 class="CADKlee_result_title">Resultados, clientes com os nomes iguais aparecem nas tabelas abaixo: </h1>
+        <p class="ptexto">Você pode editar e excluir clicando nos links ao lado da descrição do cliente.</p>
+        <br/>
+        <br/>
+        <br/>
+        <table class="tablestyle">
+            <tr>
+                <th class="thstyle">ID</th>
+                <th class="thstyle">Nome</th>
+                <th class="thstyle">CPF</th>
+                <th class="thstyle">CNPJ</th>
+                <th class="thstyle">Endereço 1</th>
+                <th class="thstyle">Endereço 2</th>
+                <th class="thstyle">Telefone residencial</th>
+                <th class="thstyle">Telefone comercial</th>
+                <th class="thstyle">Email</th>
+                <th class="thstyle">Descrição</th>
+            </tr>
+            <tr>
+                <td class="tdstyle">ID do cliente 1</td>
+                <td class="tdstyle">Nome do cliente 1</td>
+                <td class="tdstyle">CPF do cliente 1</td>
+                <td class="tdstyle">CNPJ do cliente 1</td>
+                <td class="tdstyle">Endereço do cliente 1</td>
+                <td class="tdstyle">Endereço do cliente 1</td>
+                <td class="tdstyle">Telefone do cliente 1</td>
+                <td class="tdstyle">Telefone do cliente 1</td>
+                <td class="tdstyle">Email do cliente 1</td>
+                <td class="tdstyle">Descrição do cliente 1</td>
+                <td class="tdlink"><p>             </p></td>
+                <td class="tdlink"><a href="../editar_cliente/">EDITAR</a></td>
+                <td class="tdlink"><p>             </p></td>
+                <td class="tdlink"><a href="../confirmar_exclusao/">EXCLUIR</a></td>
+            </tr>
+                <tr>
+                <td class="tdstyle">ID do cliente 2</td>
+                <td class="tdstyle">Nome do cliente 2</td>
+                <td class="tdstyle">CPF do cliente 2</td>
+                <td class="tdstyle">CNPJ do cliente 2</td>
+                <td class="tdstyle">Endereço do cliente 2</td>
+                <td class="tdstyle">Endereço do cliente 2</td>
+                <td class="tdstyle">Telefone do cliente 2</td>
+                <td class="tdstyle">Telefone do cliente 2</td>
+                <td class="tdstyle">Email do cliente 2</td>
+                <td class="tdstyle">Descrição do cliente 2</td>
+                <td class="tdlink"><p>             </p></td>
+                <td class="tdlink"><a href="../editar_cliente/">EDITAR</a></td>
+                <td class="tdlink"><p>             </p></td>
+                <td class="tdlink"><a href="../confirmar_exclusao/">EXCLUIR</a></td>
+            </tr>
+        </table>
+        <br class="brDes"/>
+        <br/>
+        <a class="linkvoltar" href="../inicio/">Voltar</a>
+    </div>
+
+</body>
+</html>

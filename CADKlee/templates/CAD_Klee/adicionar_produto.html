@@ -1,0 +1,43 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>CADKlee: Adicionar novo produto</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="{% static 'css/cadkleecss.css' %}">
+</head>
+<body>
+
+    <div class="CADKlee_rectangle_div_red">
+        <h1 class="CADKlee_title">CADKlee</h1>
+    </div>
+
+    <div class="CADKlee_form_login">
+        <h1 class="CADKlee_singup_title">Incluir novo produto: </h1>
+        <br/>
+        <br/>
+        <form action="" method="post">
+            <label class="labeltextform">Nome:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+            <input class="inputText" type="text" placeholder="Escreva aqui o nome do produto"><br/><br/>
+            <label class="labeltextform">Descrição:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+            <input class="inputText" type="text" placeholder="Escreva aqui a descrição"><br/><br/>
+            <label class="labeltextform">Código:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+            <input class="inputText" type="text" placeholder="O código do produto aqui (se tiver)">
+            &nbsp
+            &nbsp
+            &nbsp
+            <input class="inputSubmit" type="submit" value="Incluir">
+        </form>
+        <br/>
+        <a class="linkvoltar" href="../controle_estoque/">Voltar</a>
+                <br/>
+        <br/>
+        <br/>
+
+    </div>
+
+</body>
+</html>

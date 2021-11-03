@@ -1,0 +1,43 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>CADKlee: Alterar senha</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="{% static 'css/cadkleecss.css' %}">
+</head>
+<body>
+
+    <div class="CADKlee_rectangle_div_red">
+        <h1 class="CADKlee_title">CADKlee</h1>
+    </div>
+
+    <div class="CADKlee_form_login">
+        <h1 class="CADKlee_singup_title">Digite a nova senha e confirme ela depois, clique em "Salvar"</h1>
+        <br/>
+        <br/>
+        <form action="" method="post">
+            <label class="labeltextform">Senha antiga:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+            <input class="inputText" type="password" placeholder="Digite a senha atual"><br/><br/>
+            <label class="labeltextform">Nova senha:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+            <input class="inputText" type="password" placeholder="A nova senha"><br/><br/>
+            <label class="labeltextform">Repetir senha:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+            <input class="inputText" type="password" placeholder="Digite de novo a nova senha">
+            &nbsp
+            &nbsp
+            &nbsp
+            <input class="inputSubmit" type="submit" value="Salvar">
+        </form>
+        <br/>
+        <a class="linkvoltar" href="../inicio/">Início</a>
+                <br/>
+        <br/>
+        <br/>
+
+    </div>
+
+</body>
+</html>

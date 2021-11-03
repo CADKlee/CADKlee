@@ -1,0 +1,58 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>CADKlee: Resultado da pesquisa</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="{% static 'css/cadkleecss.css' %}">
+</head>
+<body>
+
+    <div class="CADKlee_rectangle_div_red">
+        <h1 class="CADKlee_title">CADKlee</h1>
+    </div>
+
+    <div class="CADKlee_form_login">
+        <h1 class="CADKlee_result_title">Resultados, produtos com os nomes/códigos iguais aparecem nas tabelas abaixo: </h1>
+        <p class="ptexto">Você pode editar e excluir clicando nos links ao lado da descrição do cliente.</p>
+        <br/>
+        <br/>
+        <br/>
+        <table class="tablestyle">
+            <tr>
+                <th class="thstyle">Nome</th>
+                <th class="thstyle">Descrição</th>
+                <th class="thstyle">Código</th>
+                <th class="thstyle">Quantidade</th>
+            </tr>
+            <tr>
+                <td class="tdstyle">Nome do produto 1</td>
+                <td class="tdstyle">Descrição do produto 1</td>
+                <td class="tdstyle">Código do produto 1</td>
+                <td class="tdstyle">Quantidade do produto 1</td>
+                <td class="tdlink"><p>             </p></td>
+                <td class="tdlink"><a href="../editar_produto/">EDITAR</a></td>
+                <td class="tdlink"><p>             </p></td>
+                <td class="tdlink"><a href="../confirmar_exclusao_produto/">EXCLUIR</a></td>
+            </tr>
+            <tr>
+                <td class="tdstyle">Nome do produto 2</td>
+                <td class="tdstyle">Descrição do produto 2</td>
+                <td class="tdstyle">Código do produto 2</td>
+                <td class="tdstyle">Quantidade do produto 2</td>
+                <td class="tdlink"><p>             </p></td>
+                <td class="tdlink"><a href="../editar_produto/">EDITAR</a></td>
+                <td class="tdlink"><p>             </p></td>
+                <td class="tdlink"><a href="../confirmar_exclusao_produto/">EXCLUIR</a></td>
+            </tr>
+        </table>
+        <br class="brDes"/>
+        <br/>
+        <a class="linkvoltar" href="../inicio/">Voltar</a>
+    </div>
+
+</body>
+</html>

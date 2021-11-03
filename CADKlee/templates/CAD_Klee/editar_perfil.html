@@ -1,0 +1,41 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>CADKlee: Editar dados do perfil</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="{% static 'css/cadkleecss.css' %}">
+</head>
+<body>
+
+    <div class="CADKlee_rectangle_div_red">
+        <h1 class="CADKlee_title">CADKlee</h1>
+    </div>
+
+    <div class="CADKlee_form_login">
+        <h1 class="CADKlee_singup_title">Altere seus dados de usuário e clique em salvar</h1>
+        <br/>
+        <br/>
+        <form action="" method="post">
+            <label class="labeltextform">Nome:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+            <input class="inputText" type="text" placeholder="digite o nome aqui"><br/><br/>
+            <label class="labeltextform">e-mail:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+            <input class="inputText" type="text" placeholder="digite o email aqui"><br/><br/>
+            <label class="labeltextform">senha:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+            <input class="inputText" type="text" placeholder="senha"><br/><br/>
+            <label class="labeltextform">repetir senha:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+            <input class="inputText" type="text" placeholder="repetir senha">
+            &nbsp
+            &nbsp
+            &nbsp
+            <input class="inputSubmit" type="submit" value="Salvar">
+        </form>
+        <br/>
+        <a class="linkvoltar" href="../inicio/">Início</a>
+    </div>
+
+</body>
+</html>

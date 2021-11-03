@@ -1,0 +1,43 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>CADKlee: Cadastro de Clientes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="{% static 'css/cadkleecss.css' %}">
+</head>
+<body>
+
+    <div class="CADKlee_rectangle_div_red">
+        <h1 class="CADKlee_title">CADKlee</h1>
+    </div>
+
+    <div class="CADKlee_form_login">
+        <h1 class="CADKlee_singup_title">Escolha uma opção: </h1>
+        <br/>
+        <br/>
+        <br/>
+        <a href="../pesquisa_de_cliente/" class="alink">
+            <div class="orangeRectangle" >
+                <h1 class="rectangles_titles_cadastro_clientes"> PESQUISAR CLIENTE NA BASE<br/>DE DADOS</h1>
+            </div>
+        </a>
+        <a href="../adicionar_cliente/" class="alink">
+            <div class="orangeRectangle">
+                <h1 class="rectangles_titles_cadastro_clientes">ADICIONAR UM NOVO CLIENTE</h1>
+            </div>
+        </a>
+        <br class="brDes"/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <a class="linkvoltar" href="../inicio/">Voltar</a>
+    </div>
+
+</body>
+</html>

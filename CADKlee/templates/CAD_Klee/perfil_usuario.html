@@ -1,0 +1,43 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>CADKlee: Perfil do usuário</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="{% static 'css/cadkleecss.css' %}">
+</head>
+<body>
+
+    <div class="CADKlee_rectangle_div_red">
+        <h1 class="CADKlee_title">CADKlee</h1>
+    </div>
+
+    <div class="CADKlee_form_login">
+
+        <br/>
+        <br/>
+        <br/>
+        <table class="tablestyle">
+            <tr>
+                <th class="thstyle">e-mail</th>
+                <th class="thstyle">Nome</th>
+                <th class="thstyle">Senha</th>
+            </tr>
+            <tr>
+                <td class="tdstyle">e-mail do usuário</td>
+                <td class="tdstyle">Nome do usuário</td>
+                <td class="tdstyle">senha do usuário</td>
+            </tr>
+        </table>
+        <br class="brDes"/>
+        <br/>
+        <a class="linkvoltar" href="../alterar_senha/">Alterar senha</a><br/><br/>
+        <a class="linkvoltar" href="../editar_perfil/">Alterar dados</a><br/><br/>
+        <a class="linkvoltar" href="../inicio/">Início</a>
+    </div>
+
+</body>
+</html>

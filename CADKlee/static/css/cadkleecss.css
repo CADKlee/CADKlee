@@ -1,0 +1,227 @@
+.CADKlee_rectangle_div_red {
+    height: 147px;
+    width: 1370px;
+    background-color: #CC0000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.CADKlee_title {
+    color: #009900;
+    position: absolute;
+    top: 10px;
+    left: 63px;
+    font-size: 53px;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
+.CADKlee_form_login {
+    position: absolute;
+    top: 220px;
+    left: 63px;
+}
+
+.CADKlee_login_title {
+    font-family: sans-serif;
+    font-size: 24px;
+}
+
+.inputSubmit {
+    height: 25px;
+    width: 100px;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.inputText {
+    height: 15px;
+    width: 194px;
+    border-radius: 5px;
+    font-family: sans-serif;
+}
+
+.labeltextform {
+    font-weight: bold;
+    font-size: 16px;
+    font-family: sans-serif;
+}
+
+.ptextform {
+    font-weight: bold;
+    font-size: 13px;
+    font-family: sans-serif;
+}
+
+.CADKlee_singup_title{
+    font-weight: bold;
+    font-size: 16px;
+    font-family: sans-serif;
+}
+
+.linkvoltar {
+    font-size: 16px;
+}
+
+.inputSubmitRecuperar {
+    height: 25px;
+    width: 122px;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.rectangles_titles {
+    font-weight: bold;
+    font-size: 16px;
+    font-family: sans-serif;
+    line-height: 1.5;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.rectangleBlue {
+    height: 80px;
+    width: 200px;
+    background-color: #4388CC;
+    text-align: center;
+    line-height: 80px;
+    float:left;
+    margin-right:50px;
+}
+
+.rectangleYellow {
+    height: 80px;
+    width: 200px;
+    background-color: #FFCC00;
+    text-align: center;
+    line-height: 80px;
+    float:left;
+    margin-right:50px;
+}
+
+.rectanglePurple {
+    height: 80px;
+    width: 200px;
+    background-color: #CC33CC;
+    text-align: center;
+    line-height: 80px;
+    float:left;
+    margin-right:50px;
+}
+
+.brDes {
+    clear:both;
+}
+
+.orangeRectangle {
+    height: 76px;
+    width: 210px;
+    background-color: #FF6600;
+    text-align: center;
+    line-height: 80px;
+    float:left;
+    margin-right:50px;
+}
+
+.rectangles_titles_cadastro_clientes {
+    font-weight: bold;
+    font-size: 13px;
+    font-family: sans-serif;
+    line-height: 1.5;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.ptexto {
+    font-size: 13px;
+    font-family: sans-serif;
+}
+
+.inputTextPesquisa {
+    height: 15px;
+    width: 261px;
+    border-radius: 5px;
+    font-family: sans-serif;
+}
+
+.CADKlee_result_title{
+    font-weight: bold;
+    font-size: 20px;
+    font-family: sans-serif;
+}
+
+.thstyle {
+    font-weight: bold;
+    font-size: 13px;
+    font-family: sans-serif;
+    background-color: #CCCCCC;
+    border: 1px solid black;
+    height: 80px;
+    text-align: left;
+}
+
+.tdstyle {
+    font-size: 13px;
+    font-family: sans-serif;
+    border: 1px solid black;
+    height: 81px;
+    text-align: left;
+}
+
+.tablestyle {
+    border: 1px solid gray
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tdlink {
+    font-family: sans-serif;
+    font-size: 13px;
+    display: block;
+
+}
+
+.redRectangle {
+    height: 70px;
+    width: 200px;
+    background-color: #CC0000;
+    text-align: center;
+    line-height: 70px;
+    float:left;
+    margin-right:50px;
+}
+
+.alink:link {
+  color: black;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+.alink:visited {
+  color: black;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+.inputQuantidade {
+    height: 21px;
+    width: 83px;
+    border-radius: 5px;
+    font-family: sans-serif;
+}
+
+.inputSelecione {
+    height: 25px;
+    width: 194px;
+    border-radius: 5px;
+    font-family: sans-serif;
+}
+
+.inputSubmitOK {
+    height: 24px;
+    width: 90px;
+    font-weight: bold;
+    border-radius: 5px;
+}
