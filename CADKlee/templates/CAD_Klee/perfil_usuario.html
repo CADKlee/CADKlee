@@ -24,12 +24,12 @@
             <tr>
                 <th class="thstyle">e-mail</th>
                 <th class="thstyle">Nome</th>
-                <th class="thstyle">Senha</th>
+                <th class="thstyle">Senha (ESTA CRIPTOGRAFADA)</th>
             </tr>
             <tr>
-                <td class="tdstyle">e-mail do usuário</td>
-                <td class="tdstyle">Nome do usuário</td>
-                <td class="tdstyle">senha do usuário</td>
+                <td class="tdstyle">{{request.user.email}}</td>
+                <td class="tdstyle">{{request.user.username}}</td>
+                <td class="tdstyle">{{request.user.password}}</td>
             </tr>
         </table>
         <br class="brDes"/>

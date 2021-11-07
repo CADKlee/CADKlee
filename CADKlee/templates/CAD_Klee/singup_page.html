@@ -19,19 +19,35 @@
         <h1 class="CADKlee_singup_title">Entre com seus dados e clique em "Criar usuário"</h1>
         <br/>
         <br/>
-        <form action="" method="post">
-            <label class="labeltextform">Nome:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
-            <input class="inputText" type="text" placeholder="digite o nome aqui"><br/><br/>
-            <label class="labeltextform">e-mail:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
-            <input class="inputText" type="text" placeholder="digite o email aqui"><br/><br/>
-            <label class="labeltextform">senha:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
-            <input class="inputText" type="text" placeholder="senha"><br/><br/>
-            <label class="labeltextform">repetir senha:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
-            <input class="inputText" type="text" placeholder="repetir senha">
+        <form method="post">{% csrf_token %}
+
+            {% for field in registration_form %}
+                <p>
+                    {{field.label_tag}}
+                    {{field}}
+
+                    {% if field.help_text %}
+                        <small style="color: grey;">{{field.help_text}}</small>
+                    {% endif %}
+
+                    {% for error in field.errors%}
+                        <p style="color: red;">{{error}}</p>
+                    {% endfor %}
+                </p>
+            {% endfor %}
+
+<!--            <label class="labeltextform">Nome:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>-->
+<!--            <input class="inputText" type="text" placeholder="digite o nome aqui"><br/><br/>-->
+<!--            <label class="labeltextform">e-mail:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>-->
+<!--            <input class="inputText" type="text" placeholder="digite o email aqui"><br/><br/>-->
+<!--            <label class="labeltextform">senha:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>-->
+<!--            <input class="inputText" type="text" placeholder="senha"><br/><br/>-->
+<!--            <label class="labeltextform">repetir senha:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>-->
+<!--            <input class="inputText" type="text" placeholder="repetir senha">-->
             &nbsp
             &nbsp
             &nbsp
-            <input class="inputSubmit" type="submit" value="Criar usuário">
+            <button class="inputSubmit" type="submit">Criar usuário</button>
         </form>
         <br/>
         <a href="../">Voltar</a>

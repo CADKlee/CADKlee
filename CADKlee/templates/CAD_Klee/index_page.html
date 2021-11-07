@@ -16,7 +16,7 @@
     </div>
 
     <div class="CADKlee_form_login">
-        <h1 class="CADKlee_singup_title">Bem vindo #nome_do_usuario_aqui# clique em alguma opção nos retângulos abaixo:</h1>
+        <h1 class="CADKlee_singup_title">Bem vindo {{request.user.username}} clique em alguma opção nos retângulos abaixo:</h1>
         <br/>
         <br/>
         <br/>
@@ -39,7 +39,8 @@
         <br/>
         <br/>
 
-        <a class="linkvoltar" href="../">Sair</a>
+        <a class="linkvoltar" href="{% url 'logout' %}">Sair</a>
+
     </div>
 
 </body>

@@ -1,12 +1,13 @@
 from django.urls import path
 
-from .views import LoginPage, SingupPage, ForgetPassword, IndexPage, CadastroCliente, PesquisarCliente, ResultadoPesquisaCliente, \
+from .views import login_view, logout_view, registration_view, ForgetPassword, IndexPage, CadastroCliente, PesquisarCliente, ResultadoPesquisaCliente, \
     AlterarCliente, ExcluirCliente, AdicionarCliente, ControleEstoque, PesquisaProduto, IncluirProduto, EntradaSaidaEstoque, ResultadoPesquisaProduto, \
     AlterarProduto, ExcluirProduto, PerfilDoUsuario, PerfilEditar, AlterarSenha
 
 urlpatterns = [
-    path('', LoginPage.as_view(), name='entrar'),
-    path('cadastro/', SingupPage.as_view(), name='cadastro'),
+    path('', login_view, name='entrar'),
+    path('cadastro/', registration_view, name='cadastro'),
+    path('logout/', logout_view, name='logout'),
     path('recuperar_senha/', ForgetPassword.as_view(), name='recuperar'),
     path('inicio/', IndexPage.as_view(), name='inicio'),
     path('cadastro_de_clientes/', CadastroCliente.as_view(), name='cadastrar-cliente'),
@@ -24,5 +25,5 @@ urlpatterns = [
     path('confirmar_exclusao_produto/', ExcluirProduto.as_view(), name='excluir-produto'),
     path('perfil/', PerfilDoUsuario.as_view(), name='perfil-usuario'),
     path('editar_perfil/', PerfilEditar.as_view(), name='editar-perfil'),
-    path('alterar_senha/', AlterarSenha.as_view(), name='alterar-senha')
+    path('alterar_senha/', AlterarSenha.as_view(), name='alterar-senha'),
 ]
