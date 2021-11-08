@@ -19,25 +19,55 @@
         <h1 class="CADKlee_singup_title">Incluir novo cliente: </h1>
         <br/>
         <br/>
-        <form action="" method="post">
+        <form method="post">{% csrf_token %}
+
+<!--            {{ form }}-->
+
+            {% for field in client_registration_form %}
+                <p>
+<!--                    {{field.label_tag}}-->
+<!--                    {{field}}-->
+
+                    {% if field.help_text %}
+                        <small style="color: grey;">{{field.help_text}}</small>
+                    {% endif %}
+
+                    {% for error in field.errors%}
+                        <p style="color: red;">{{error}}</p>
+                    {% endfor %}
+
+                    {% if client_registration_form.non_field_errors %}
+                        <div style="color:red;">
+                            <p>{{client_registration_form.non_field_errors}}</p>
+                        </div>
+                    {% endif %}
+                </p>
+            {% endfor %}
+
             <label class="labeltextform">Nome:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
-            <input class="inputText" type="text" placeholder="Escreva aqui o nome"><br/><br/>
+            <input class="inputText" type="text" placeholder="Escreva aqui o nome"             name="nome_CLIENTE"><br/><br/>
+
             <label class="labeltextform">CPF:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
-            <input class="inputText" type="text" placeholder="Escreva aqui o CPF"><br/><br/>
-            <label class="labeltextform">CNPJ:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
-            <input class="inputText" type="text" placeholder="Escreva aqui o CNPJ"><br/><br/>
+            <input class="inputText" type="text" placeholder="Escreva aqui o CPF ou CNPJ"      name="CPF_CNPJ_CLIENTE"><br/><br/>
+
             <label class="labeltextform">Endereço 1:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
-            <input class="inputText" type="text" placeholder="Escreva aqui o endereço"><br/><br/>
+            <input class="inputText" type="text" placeholder="Escreva aqui o endereço"         name="endereco_1_CLIENTE"><br/><br/>
+
             <label class="labeltextform">Endereço 2:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
-            <input class="inputText" type="text" placeholder="Escreva aqui o segundo endereço"><br/><br/>
+            <input class="inputText" type="text" placeholder="Escreva aqui o segundo endereço" name="endereco_2_CLIENTE"><br/><br/>
+
             <label class="labeltextform">Telefone residencial:&nbsp&nbsp</label>
-            <input class="inputText" type="text" placeholder="Escreva aqui o telefone"><br/><br/>
+            <input class="inputText" type="text" placeholder="Escreva aqui o telefone"         name="contato_telefone_residencial_CLIENTE"><br/><br/>
+
             <label class="labeltextform">Telefone comercial:&nbsp&nbsp&nbsp&nbsp</label>
-            <input class="inputText" type="text" placeholder="Escreva aqui o telefone"><br/><br/>
+            <input class="inputText" type="text" placeholder="Escreva aqui o telefone"         name="contato_telefone_comercial_CLIENTE"><br/><br/>
+
             <label class="labeltextform">e-mail:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
-            <input class="inputText" type="text" placeholder="Escreva aqui o email"><br/><br/>
+            <input class="inputText" type="text" placeholder="Escreva aqui o email"            name="contato_email_CLIENTE"><br/><br/>
+
             <label class="labeltextform">Descrição:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
-            <input class="inputText" type="text" placeholder="Escreva aqui a descrição">
+            <input class="inputText" type="text" placeholder="Escreva aqui a descrição"        name="descricao_CLIENTE">
+
             &nbsp
             &nbsp
             &nbsp

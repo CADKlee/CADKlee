@@ -19,22 +19,44 @@
         <h1 class="CADKlee_singup_title">Altere seus dados de usuário e clique em salvar</h1>
         <br/>
         <br/>
-        <form action="" method="post">
+        <form action="" method="post">{% csrf_token %}
+
+            {% for field in account_form %}
+                <p>
+<!--                    {{field.label_tag}}-->
+<!--                    {{field}}-->
+
+                    {% if field.help_text %}
+                        <small style="color: grey;">{{field.help_text}}</small>
+                    {% endif %}
+                </p>
+            {% endfor %}
+
+            {% for field in account_form %}
+                {% for error in field.errors %}
+                    <p style="color: red;">{{error}}</p>
+                {% endfor %}
+            {% endfor %}
+
+            {% if account_form.non_field_errors %}
+                <div style="color:red;">
+                    <p>{{account_form.non_field_errors}}</p>
+                </div>
+            {% endif %}
+
+            <label class="labeltextform">Email:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+            <input class="inputText" type="email"placeholder="digite o nome aqui"  name="email"><br/><br/>
+
             <label class="labeltextform">Nome:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
-            <input class="inputText" type="text" placeholder="digite o nome aqui"><br/><br/>
-            <label class="labeltextform">e-mail:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
-            <input class="inputText" type="text" placeholder="digite o email aqui"><br/><br/>
-            <label class="labeltextform">senha:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
-            <input class="inputText" type="text" placeholder="senha"><br/><br/>
-            <label class="labeltextform">repetir senha:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
-            <input class="inputText" type="text" placeholder="repetir senha">
+            <input class="inputText" type="text" placeholder="digite o email aqui" name="username"><br/><br/>
+
             &nbsp
             &nbsp
             &nbsp
             <input class="inputSubmit" type="submit" value="Salvar">
         </form>
         <br/>
-        <a class="linkvoltar" href="../inicio/">Início</a>
+        <a class="linkvoltar" href="{% url 'inicio' %}">Início</a>
     </div>
 
 </body>

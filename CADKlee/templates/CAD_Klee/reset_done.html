@@ -1,0 +1,28 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>CADKlee: RESET DE SENHA</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="{% static 'css/cadkleecss.css' %}">
+</head>
+<body>
+
+    <div class="CADKlee_rectangle_div_red">
+        <h1 class="CADKlee_title">CADKlee</h1>
+    </div>
+
+    <div class="CADKlee_form_login">
+        <h1 class="CADKlee_singup_title">Enviamos um email para você</h1>
+        <p class="ptexto">Acesse o link no seu email para podermos redefinir sua senha.</p>
+        <br/>
+        <br/>
+            <a class="linkvoltar" href="{% url 'entrar' %}">OK</a>
+        <br/>
+    </div>
+
+</body>
+</html>

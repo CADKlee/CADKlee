@@ -19,13 +19,23 @@
         <h1 class="CADKlee_singup_title">Digite a nova senha e confirme ela depois, clique em "Salvar"</h1>
         <br/>
         <br/>
-        <form action="" method="post">
+        <form action="" method="post">{% csrf_token %}
+
             <label class="labeltextform">Senha antiga:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
-            <input class="inputText" type="password" placeholder="Digite a senha atual"><br/><br/>
+            <input class="inputText" type="password" placeholder="Digite a senha atual"        name="old_password"><br/><br/>
+
             <label class="labeltextform">Nova senha:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
-            <input class="inputText" type="password" placeholder="A nova senha"><br/><br/>
+            <input class="inputText" type="password" placeholder="A nova senha"                name="new_password1"><br/><br/>
+
             <label class="labeltextform">Repetir senha:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
-            <input class="inputText" type="password" placeholder="Digite de novo a nova senha">
+            <input class="inputText" type="password" placeholder="Digite de novo a nova senha" name="new_password2">
+
+            {% for field in form %}
+                {% for error in field.errors %}
+                    <p style="color:red;">{{ error }}</p>
+                {% endfor %}
+            {% endfor %}
+
             &nbsp
             &nbsp
             &nbsp

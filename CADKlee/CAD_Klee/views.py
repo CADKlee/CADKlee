@@ -1,7 +1,12 @@
 from django.shortcuts import  render, redirect
 from django.contrib.auth import login, authenticate, logout
-from .forms import RegistrationForm, AccountAuthenticationForm
-from django.views.generic import TemplateView
+from .forms import RegistrationForm, AccountAuthenticationForm, AccountUpdateForm
+from django.views.generic import TemplateView, CreateView
+from django.urls import reverse_lazy
+from .models import Clientes
+from .forms import ClienteForm
+
+#---------------------USUARIO------------------------------------
 
 def registration_view(request):
     context = {}
@@ -94,14 +99,64 @@ def login_view(request):
 class ForgetPassword(TemplateView):
     template_name = 'CAD_Klee/forgetpassword_page.html'
 
+
+class PerfilDoUsuario(TemplateView):
+    template_name = 'CAD_Klee/perfil_usuario.html'
+
+def account_view(request):
+
+    if not request.user.is_authenticated:
+        return redirect('entrar')
+
+    context = {}
+
+    if request.POST:
+        form = AccountUpdateForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+    else:
+        form = AccountUpdateForm(
+            initial= {
+                "email": request.user.email,
+                "nome": request.user.username,
+            }
+        )
+    context['account_form'] = form
+    return render(request, 'CAD_Klee/editar_perfil.html', context)
+
+# class PerfilEditar(TemplateView):
+#     template_name = 'CAD_Klee/editar_perfil.html'
+
+class AlterarSenha(TemplateView):
+    template_name = 'CAD_Klee/alterar_senha.html'
+
+#---------------------USUARIO------------------------------------
+
+
+#------------------------PAGINAS-------------------------------------
+
 class IndexPage(TemplateView):
     template_name = 'CAD_Klee/index_page.html'
+
+#------------------------PAGINAS-------------------------------------
+
+
+#------------------------CLIENTES------------------------------------
 
 class CadastroCliente(TemplateView):
     template_name = 'CAD_Klee/cadastro_clientes.html'
 
-class PesquisarCliente(TemplateView):
-    template_name = 'CAD_Klee/pesquisar_cliente.html'
+def PesquisarCliente(request):
+    qs = Clientes.objects.all()
+    nome_CLIENTE_query = request.GET.get('nome_CLIENTE')
+    print(nome_CLIENTE_query)
+    context = {
+        'queryset': qs
+    }
+    return render(request, 'CAD_Klee/pesquisar_cliente.html', context)
+
+# class PesquisarCliente(TemplateView):
+#     template_name = 'CAD_Klee/pesquisar_cliente.html'
 
 class ResultadoPesquisaCliente(TemplateView):
     template_name = 'CAD_Klee/resultado_pesquisa_cliente.html'
@@ -112,9 +167,27 @@ class AlterarCliente(TemplateView):
 class ExcluirCliente(TemplateView):
     template_name = 'CAD_Klee/excluir_cliente.html'
 
-class AdicionarCliente(TemplateView):
-    template_name = 'CAD_Klee/adicionar_cliente.html'
 
+def AdicionarCliente(request):
+
+    form = ClienteForm()
+    if request.method == 'POST':
+        form = ClienteForm(request.POST)
+        if form.is_valid():
+            dados = form.save()
+            print('DADOS: %s' %dados)
+            return  redirect('cadastrar-cliente')
+
+    context = {'client_registration_form': form}
+    return render(request, 'CAD_Klee/adicionar_cliente.html', context)
+
+# class AdicionarCliente(TemplateView):
+#     template_name = 'CAD_Klee/adicionar_cliente.html'
+
+#------------------------CLIENTES------------------------------------
+
+
+#------------------------ESTOQUE-------------------------------------
 class ControleEstoque(TemplateView):
     template_name = 'CAD_Klee/controle_estoque.html'
 
@@ -136,13 +209,8 @@ class AlterarProduto(TemplateView):
 class ExcluirProduto(TemplateView):
     template_name = 'CAD_Klee/excluir_produto.html'
 
-class PerfilDoUsuario(TemplateView):
-    template_name = 'CAD_Klee/perfil_usuario.html'
+#------------------------ESTOQUE-------------------------------------
 
-class PerfilEditar(TemplateView):
-    template_name = 'CAD_Klee/editar_perfil.html'
 
-class AlterarSenha(TemplateView):
-    template_name = 'CAD_Klee/alterar_senha.html'
 
 # Create your views here.

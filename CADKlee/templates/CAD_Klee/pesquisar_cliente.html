@@ -20,14 +20,49 @@
         <p class="ptexto">Caso dois ou mais clientes possuam o mesmo nome eles aparecem listados da mesma forma.</p>
         <br/>
         <br/>
-        <form action="" method="post">
-            <input class="inputTextPesquisa" type="text" placeholder="Nome do cliente aqui">
+        <form method="post">{% csrf_token %}
+<!--            {% for field in client_registration_form %}-->
+<!--            {% endfor %}-->
+            <input class="inputTextPesquisa" type="text" placeholder="Nome do cliente aqui" name="nome_CLIENTE">
+
             &nbsp
             &nbsp
             &nbsp
             &nbsp
             <input class="inputSubmitRecuperar" type="submit" value="Pesquisar"><br/><br/>
         </form>
+
+        {% for Clientes in queryset %}
+            <table class="tablestyle">
+            <tr>
+                <th class="thstyle">Nome</th>
+                <th class="thstyle">CPF/CNPJ</th>
+                <th class="thstyle">Endereço 1</th>
+                <th class="thstyle">Endereço 2</th>
+                <th class="thstyle">Telefone residencial</th>
+                <th class="thstyle">Telefone comercial</th>
+                <th class="thstyle">Email</th>
+                <th class="thstyle">Descrição</th>
+            </tr>
+            <tr>
+                <td class="tdstyle">{{ Clientes.nome_CLIENTE }}</td>
+                <td class="tdstyle">{{ Clientes.CPF_CNPJ_CLIENTE }}</td>
+                <td class="tdstyle">{{ Clientes.endereco_1_CLIENTE }}</td>
+                <td class="tdstyle">{{ Clientes.endereco_2_CLIENTE }}</td>
+                <td class="tdstyle">{{ Clientes.contato_telefone_comercial_CLIENTE }}</td>
+                <td class="tdstyle">{{ Clientes.contato_telefone_residencial_CLIENTE }}</td>
+                <td class="tdstyle">{{ Clientes.contato_email_CLIENTE }}</td>
+                <td class="tdstyle">{{ Clientes.descricao_CLIENTE }}</td>
+                <td class="tdlink"><p>             </p></td>
+                <td class="tdlink"><a href="../editar_cliente/">EDITAR</a></td>
+                <td class="tdlink"><p>             </p></td>
+                <td class="tdlink"><a href="../confirmar_exclusao/">EXCLUIR</a></td>
+            </tr>
+
+        </table>
+            <br/>
+            <br/>
+                {% endfor %}
         <br/>
         <a class="linkvoltar" href="../cadastro_de_clientes">Voltar</a>
     </div>

@@ -41,7 +41,7 @@
 <!--                </p>-->
 <!--            {% endfor %}-->
             <label class="labeltextform">e-mail:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
-            <input class="inputText" type="email" placeholder="Seu email" name="email"><br/><br/>
+            <input class="inputText" type="email"    placeholder="Seu email" name="email"><br/><br/>
             <label class="labeltextform">senha:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
             <input class="inputText" type="password" placeholder="Sua senha" name="password">
             &nbsp
@@ -50,8 +50,8 @@
             <button class="inputSubmit" type="submit">Entrar</button>
         </form>
         <br/>
-        <p class="ptextform">Primeiro acesso: &nbsp  <a href="cadastro">clique aqui</a></p>
-        <p class="ptextform">Esqueci a senha: &nbsp  <a href="recuperar_senha/">clique aqui</a></p>
+        <p class="ptextform">Primeiro acesso: &nbsp  <a href="{% url 'cadastro' %}">clique aqui</a></p>
+        <p class="ptextform">Esqueci a senha: &nbsp  <a href="{% url 'password_reset' %}">clique aqui</a></p>
     </div>
 
 </body>

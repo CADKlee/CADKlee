@@ -23,8 +23,8 @@
 
             {% for field in registration_form %}
                 <p>
-                    {{field.label_tag}}
-                    {{field}}
+<!--                    {{field.label_tag}}-->
+<!--                    {{field}}-->
 
                     {% if field.help_text %}
                         <small style="color: grey;">{{field.help_text}}</small>
@@ -36,14 +36,19 @@
                 </p>
             {% endfor %}
 
-<!--            <label class="labeltextform">Nome:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>-->
-<!--            <input class="inputText" type="text" placeholder="digite o nome aqui"><br/><br/>-->
-<!--            <label class="labeltextform">e-mail:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>-->
-<!--            <input class="inputText" type="text" placeholder="digite o email aqui"><br/><br/>-->
-<!--            <label class="labeltextform">senha:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>-->
-<!--            <input class="inputText" type="text" placeholder="senha"><br/><br/>-->
-<!--            <label class="labeltextform">repetir senha:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>-->
-<!--            <input class="inputText" type="text" placeholder="repetir senha">-->
+            <label class="labeltextform">Nome:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+            <input class="inputText" type="text"     placeholder="digite o nome aqui"   name="username"><br/><br/>
+
+            <label class="labeltextform">e-mail:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+            <input class="inputText" type="email"    placeholder="digite o email aqui"  name="email"><br/><br/>
+
+            <label class="labeltextform">senha:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+            <input class="inputText" type="password" placeholder="senha"                name="password1"><br/><br/>
+
+            <label class="labeltextform">repetir senha:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+            <input class="inputText" type="password" placeholder="repetir senha"        name="password2">
+
+
             &nbsp
             &nbsp
             &nbsp

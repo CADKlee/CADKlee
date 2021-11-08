@@ -2,21 +2,27 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
 class Clientes(models.Model):
-    nome_CLIENTE                         = models.CharField(max_length=250)
-    CPF_CNPJ_CLIENTE                     = models.CharField(max_length=50)
-    endereco_1_CLIENTE                   = models.CharField(max_length=250)
-    endereco_2_CLIENTE                   = models.CharField(max_length=250, blank=True, null=True)
-    contato_telefone_comercial_CLIENTE   = models.CharField(max_length=10)
-    contato_telefone_residencial_CLIENTE = models.CharField(max_length=10, blank=True, null=True)
-    contato_email_CLIENTE                = models.CharField(max_length=20, blank=True, null=True)
-    descricao_CLIENTE = models.CharField(max_length=500, blank=True, null=True)
+    nome_CLIENTE                         = models.TextField()
+    CPF_CNPJ_CLIENTE                     = models.TextField()
+    endereco_1_CLIENTE                   = models.TextField()
+    endereco_2_CLIENTE                   = models.TextField(blank=True, null=True)
+    contato_telefone_comercial_CLIENTE   = models.TextField()
+    contato_telefone_residencial_CLIENTE = models.TextField(blank=True, null=True)
+    contato_email_CLIENTE                = models.TextField(blank=True, null=True)
+    descricao_CLIENTE                    = models.TextField(blank=True, null=True)
+
+    def __str__(self):
+        return self.nome_CLIENTE
 
 class Produtos(models.Model):
-    id_PRODUTO = models.CharField(max_length=1000)
-    nome_PRODUTO = models.CharField(max_length=1000)
-    descricao_PRODUTO = models.CharField(max_length=1000, blank=True, null=True)
-    codigo_PRODUTO = models.CharField(max_length=1000, blank=True, null=True)
-    quantidade_PRODUTO = models.IntegerField
+    id_PRODUTO          = models.TextField()
+    nome_PRODUTO        = models.TextField()
+    descricao_PRODUTO   = models.TextField(blank=True, null=True)
+    codigo_PRODUTO      = models.TextField(blank=True, null=True)
+    quantidade_PRODUTO  = models.IntegerField
+
+    def __str__(self):
+        return self.nome_PRODUTO
 
 class UsuarioAdmin(BaseUserManager):
 
