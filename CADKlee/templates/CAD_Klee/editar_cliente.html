@@ -19,32 +19,41 @@
         <h1 class="CADKlee_singup_title">Entre com os novos dados e clique em "Alterar"</h1>
         <br/>
         <br/>
-        <form action="" method="post">
+        <form method="post">{% csrf_token %}
+
+<!--        {{ form.as_p }}-->
+
             <label class="labeltextform">Nome:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
-            <input class="inputText" type="text" placeholder="Ensira o novo nome"><br/><br/>
+            <input class="inputText" type="text" placeholder="Ensira o novo nome"              name="nome_CLIENTE"><br/><br/>
+
             <label class="labeltextform">CPF:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
-            <input class="inputText" type="text" placeholder="Ensira o novo CPF"><br/><br/>
-            <label class="labeltextform">CNPJ:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
-            <input class="inputText" type="text" placeholder="Ensira o novo CNPJ"><br/><br/>
+            <input class="inputText" type="text" placeholder="Ensira o novo CPF ou CNPJ"       name="CPF_CNPJ_CLIENTE"><br/><br/>
+
             <label class="labeltextform">Endereço 1:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
-            <input class="inputText" type="text" placeholder="Ensira o novo endereço"><br/><br/>
+            <input class="inputText" type="text" placeholder="Ensira o novo endereço"          name="endereco_1_CLIENTE"><br/><br/>
+
             <label class="labeltextform">Endereço 2:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
-            <input class="inputText" type="text" placeholder="Ensira o novo endereço"><br/><br/>
+            <input class="inputText" type="text" placeholder="Ensira o novo endereço"          name="endereco_2_CLIENTE"><br/><br/>
+
             <label class="labeltextform">Telefone residencial:&nbsp&nbsp</label>
-            <input class="inputText" type="text" placeholder="Ensira o novo telefone"><br/><br/>
+            <input class="inputText" type="text" placeholder="Ensira o novo telefone"          name="contato_telefone_residencial_CLIENTE"><br/><br/>
+
             <label class="labeltextform">Telefone comercial:&nbsp&nbsp&nbsp&nbsp</label>
-            <input class="inputText" type="text" placeholder="Ensira o novo telefone"><br/><br/>
+            <input class="inputText" type="text" placeholder="Ensira o novo telefone"          name="contato_telefone_comercial_CLIENTE"><br/><br/>
+
             <label class="labeltextform">e-mail:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
-            <input class="inputText" type="text" placeholder="Ensira o novo email"><br/><br/>
+            <input class="inputText" type="text" placeholder="Ensira o novo email"             name="contato_email_CLIENTE"><br/><br/>
+
             <label class="labeltextform">Descrição:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
-            <input class="inputText" type="text" placeholder="Ensira a nova descrição">
+            <input class="inputText" type="text" placeholder="Ensira a nova descrição"         name="descricao_CLIENTE">
+
             &nbsp
             &nbsp
             &nbsp
             <input class="inputSubmit" type="submit" value="Alterar">
         </form>
         <br/>
-        <a class="linkvoltar" href="../">Voltar</a>
+        <a class="linkvoltar" href="{% url 'pesquisar-cliente' %}">Voltar</a>
                 <br/>
         <br/>
         <br/>

@@ -1,10 +1,14 @@
 from django.shortcuts import  render, redirect
 from django.contrib.auth import login, authenticate, logout
+from django.views.generic.edit import CreateView
 from .forms import RegistrationForm, AccountAuthenticationForm, AccountUpdateForm
-from django.views.generic import TemplateView, CreateView
+from django.views.generic import TemplateView, CreateView, ListView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from .models import Clientes
 from .forms import ClienteForm
+from django.contrib.auth.mixins import LoginRequiredMixin
+
+from django.shortcuts import get_object_or_404
 
 #---------------------USUARIO------------------------------------
 
@@ -146,14 +150,23 @@ class IndexPage(TemplateView):
 class CadastroCliente(TemplateView):
     template_name = 'CAD_Klee/cadastro_clientes.html'
 
-def PesquisarCliente(request):
-    qs = Clientes.objects.all()
-    nome_CLIENTE_query = request.GET.get('nome_CLIENTE')
-    print(nome_CLIENTE_query)
-    context = {
-        'queryset': qs
-    }
-    return render(request, 'CAD_Klee/pesquisar_cliente.html', context)
+class PesquisarCliente(ListView):
+    model = Clientes
+    template_name = 'CAD_Klee/pesquisar_cliente.html'
+
+#LISTAR APENAS OS REGISTROS DO USUÁRIO LOGADO
+    def get_queryset(self):
+        self.object_list = Clientes.objects.filter(user = self.request.user)
+        return self.object_list
+
+# def PesquisarCliente(request):
+#     qs = Clientes.objects.all()
+#     nome_CLIENTE_query = request.GET.get('nome_CLIENTE')
+#     print(nome_CLIENTE_query)
+#     context = {
+#         'queryset': qs
+#     }
+#     return render(request, 'CAD_Klee/pesquisar_cliente.html', context)
 
 # class PesquisarCliente(TemplateView):
 #     template_name = 'CAD_Klee/pesquisar_cliente.html'
@@ -161,25 +174,92 @@ def PesquisarCliente(request):
 class ResultadoPesquisaCliente(TemplateView):
     template_name = 'CAD_Klee/resultado_pesquisa_cliente.html'
 
-class AlterarCliente(TemplateView):
+# def AlterarCliente(request, pk):
+#     clientes = Clientes.objects.get(id=pk)
+#     form = ClienteForm(instance=clientes)
+#
+#     if request.method == 'POST':
+#         form = ClienteForm(instance=clientes)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('cadastrar-cliente')
+#
+#     context = {'form': form}
+#     return render(request, 'CAD_Klee/editar_cliente.html', context)
+
+class AlterarCliente(UpdateView):
+    login_url = reverse_lazy('entrar')
+    model = Clientes
+    fields = [
+              'nome_CLIENTE',
+              'CPF_CNPJ_CLIENTE',
+              'endereco_1_CLIENTE',
+              'endereco_2_CLIENTE',
+              'contato_telefone_residencial_CLIENTE',
+              'contato_telefone_comercial_CLIENTE',
+              'contato_email_CLIENTE',
+              'descricao_CLIENTE'
+              ]
     template_name = 'CAD_Klee/editar_cliente.html'
+    success_url = reverse_lazy('pesquisar-cliente')
 
-class ExcluirCliente(TemplateView):
+    def get_object(self, queryset=None):
+        self.object = get_object_or_404(Clientes, pk=self.kwargs['pk'], user = self.request.user)
+        return  self.object
+
+# class AlterarCliente(TemplateView):
+#     template_name = 'CAD_Klee/editar_cliente.html'
+
+class ExcluirCliente(DeleteView):
+    model = Clientes
     template_name = 'CAD_Klee/excluir_cliente.html'
+    success_url = reverse_lazy('cadastrar-cliente')
 
+    def get_object(self, queryset=None):
+        self.object = get_object_or_404(Clientes, pk=self.kwargs['pk'], user = self.request.user)
+        return  self.object
 
-def AdicionarCliente(request):
+# class ExcluirCliente(TemplateView):
+#     template_name = 'CAD_Klee/excluir_cliente.html'
 
-    form = ClienteForm()
-    if request.method == 'POST':
-        form = ClienteForm(request.POST)
-        if form.is_valid():
-            dados = form.save()
-            print('DADOS: %s' %dados)
-            return  redirect('cadastrar-cliente')
+class AdicionarCliente(CreateView):
+    model = Clientes
+    fields = [
+              'nome_CLIENTE',
+              'CPF_CNPJ_CLIENTE',
+              'endereco_1_CLIENTE',
+              'endereco_2_CLIENTE',
+              'contato_telefone_comercial_CLIENTE',
+              'contato_telefone_residencial_CLIENTE',
+              'contato_email_CLIENTE',
+              'descricao_CLIENTE',
+              ]
+    template_name = 'CAD_Klee/adicionar_cliente.html'
+    success_url = reverse_lazy('cadastrar-cliente')
+    
+    def form_valid(self, form):
 
-    context = {'client_registration_form': form}
-    return render(request, 'CAD_Klee/adicionar_cliente.html', context)
+        # Antes do super não foi criado o objeto nem salvo no banco
+        form.instance.user = self.request.user
+
+        url = super().form_valid(form) #ESSA linha de código verifica tudo oque foi digitado no formulário e valida e cria um objeto com os dados que você digitou e salva no banco de dados.
+
+        # Depois do super o objeto está criado
+
+        return url
+
+# def AdicionarCliente(request):
+#
+#     form = ClienteForm()
+#     if request.method == 'POST':
+#         form = ClienteForm(request.POST)
+#         if form.is_valid():
+#             dados = form.save()
+#             print('DADOS: %s' %dados)
+#             return  redirect('cadastrar-cliente')
+#
+#     context = {'client_registration_form': form}
+#     return render(request, 'CAD_Klee/adicionar_cliente.html', context)
 
 # class AdicionarCliente(TemplateView):
 #     template_name = 'CAD_Klee/adicionar_cliente.html'

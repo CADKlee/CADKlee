@@ -32,7 +32,7 @@
             <input class="inputSubmitRecuperar" type="submit" value="Pesquisar"><br/><br/>
         </form>
 
-        {% for Clientes in queryset %}
+        {% for Clientes in object_list %}
             <table class="tablestyle">
             <tr>
                 <th class="thstyle">Nome</th>
@@ -54,9 +54,9 @@
                 <td class="tdstyle">{{ Clientes.contato_email_CLIENTE }}</td>
                 <td class="tdstyle">{{ Clientes.descricao_CLIENTE }}</td>
                 <td class="tdlink"><p>             </p></td>
-                <td class="tdlink"><a href="../editar_cliente/">EDITAR</a></td>
+                <td class="tdlink"><a href="{% url 'editar-cliente' Clientes.pk %}">EDITAR</a></td>
                 <td class="tdlink"><p>             </p></td>
-                <td class="tdlink"><a href="../confirmar_exclusao/">EXCLUIR</a></td>
+                <td class="tdlink"><a href="{% url 'excluir-cliente' Clientes.pk %}">EXCLUIR</a></td>
             </tr>
 
         </table>
