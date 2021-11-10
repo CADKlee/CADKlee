@@ -75,7 +75,7 @@ class Produtos(models.Model):
     nome_PRODUTO                            = models.TextField()
     descricao_PRODUTO                       = models.TextField(blank=True, null=True)
     codigo_PRODUTO                          = models.TextField(blank=True, null=True)
-    quantidade_PRODUTO                      = models.IntegerField
+    quantidade_PRODUTO                      = models.IntegerField()
 
     def __str__(self):
         return self.nome_PRODUTO

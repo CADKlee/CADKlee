@@ -8,6 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="{% static 'css/cadkleecss.css' %}">
+
+<!--    IMPORÇÃO DATATABLES-->
+<!--    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.11.3/datatables.min.css"/>-->
+        <link rel="stylesheet" type="text/css" href="../static/css/DataTables/datatables.min.css"/>
+
 </head>
 <body>
 
@@ -16,56 +21,115 @@
     </div>
 
     <div class="CADKlee_form_login">
-        <h1 class="CADKlee_singup_title">Entre com o nome do cliente no campo abaixo e clique em "Pesquisar"</h1>
-        <p class="ptexto">Caso dois ou mais clientes possuam o mesmo nome eles aparecem listados da mesma forma.</p>
+        <h1 class="CADKlee_singup_title">Todos os clientes são listados de uma vez aqui, caso queira pesquisar aperte a tecla CTRL+F</h1>
+        <p class="ptexto">Basta apertar no seu teclado a tecla "Ctrl" mais a tecla com a letra "F" isso abre um campo de pesquisa do navegador para pesquisar elementos na página.</p>
         <br/>
         <br/>
-        <form method="post">{% csrf_token %}
-<!--            {% for field in client_registration_form %}-->
-<!--            {% endfor %}-->
-            <input class="inputTextPesquisa" type="text" placeholder="Nome do cliente aqui" name="nome_CLIENTE">
+<!--        <form method="get">{% csrf_token %}-->
 
-            &nbsp
-            &nbsp
-            &nbsp
-            &nbsp
-            <input class="inputSubmitRecuperar" type="submit" value="Pesquisar"><br/><br/>
-        </form>
+<!--            <input class="inputTextPesquisa" type="text" placeholder="Nome do cliente aqui" name="pesquisar">-->
+<!--            &nbsp-->
+<!--            &nbsp-->
+<!--            &nbsp-->
+<!--            &nbsp-->
+<!--            <input class="inputSubmitRecuperar" type="submit" value="Pesquisar">-->
+<!--            &nbsp-->
+<!--            &nbsp-->
+<!--            &nbsp-->
+<!--            &nbsp-->
+<!--            <a href="{% url 'pesquisar-cliente' %}">Limpar</a>-->
+<!--            <br/><br/>-->
 
-        {% for Clientes in object_list %}
-            <table class="tablestyle">
-            <tr>
-                <th class="thstyle">Nome</th>
-                <th class="thstyle">CPF/CNPJ</th>
-                <th class="thstyle">Endereço 1</th>
-                <th class="thstyle">Endereço 2</th>
-                <th class="thstyle">Telefone residencial</th>
-                <th class="thstyle">Telefone comercial</th>
-                <th class="thstyle">Email</th>
-                <th class="thstyle">Descrição</th>
-            </tr>
-            <tr>
-                <td class="tdstyle">{{ Clientes.nome_CLIENTE }}</td>
-                <td class="tdstyle">{{ Clientes.CPF_CNPJ_CLIENTE }}</td>
-                <td class="tdstyle">{{ Clientes.endereco_1_CLIENTE }}</td>
-                <td class="tdstyle">{{ Clientes.endereco_2_CLIENTE }}</td>
-                <td class="tdstyle">{{ Clientes.contato_telefone_comercial_CLIENTE }}</td>
-                <td class="tdstyle">{{ Clientes.contato_telefone_residencial_CLIENTE }}</td>
-                <td class="tdstyle">{{ Clientes.contato_email_CLIENTE }}</td>
-                <td class="tdstyle">{{ Clientes.descricao_CLIENTE }}</td>
-                <td class="tdlink"><p>             </p></td>
-                <td class="tdlink"><a href="{% url 'editar-cliente' Clientes.pk %}">EDITAR</a></td>
-                <td class="tdlink"><p>             </p></td>
-                <td class="tdlink"><a href="{% url 'excluir-cliente' Clientes.pk %}">EXCLUIR</a></td>
-            </tr>
+<!--&lt;!&ndash;            {% for clientes in queryset %}&ndash;&gt;-->
 
+<!--&lt;!&ndash;                <table class="tablestyle">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <th class="thstyle">Nome</th>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <th class="thstyle">CPF/CNPJ</th>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <th class="thstyle">Endereço 1</th>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <th class="thstyle">Endereço 2</th>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <th class="thstyle">Telefone residencial</th>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <th class="thstyle">Telefone comercial</th>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <th class="thstyle">Email</th>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <th class="thstyle">Descrição</th>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <td class="tdstyle">{{ Clientes.nome_CLIENTE }}</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <td class="tdstyle">{{ Clientes.CPF_CNPJ_CLIENTE }}</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <td class="tdstyle">{{ Clientes.endereco_1_CLIENTE }}</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <td class="tdstyle">{{ Clientes.endereco_2_CLIENTE }}</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <td class="tdstyle">{{ Clientes.contato_telefone_comercial_CLIENTE }}</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <td class="tdstyle">{{ Clientes.contato_telefone_residencial_CLIENTE }}</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <td class="tdstyle">{{ Clientes.contato_email_CLIENTE }}</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <td class="tdstyle">{{ Clientes.descricao_CLIENTE }}</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <td class="tdlink"><p>             </p></td>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <td class="tdlink"><a href="{% url 'editar-cliente' Clientes.pk %}">EDITAR</a></td>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <td class="tdlink"><p>             </p></td>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <td class="tdlink"><a href="{% url 'excluir-cliente' Clientes.pk %}">EXCLUIR</a></td>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                 </table>&ndash;&gt;-->
+<!--&lt;!&ndash;            {% endfor %}&ndash;&gt;-->
+<!--            <br/>-->
+<!--            <br/>-->
+<!--        </form>-->
+
+        <table class="tablestyle" id="tabela-clientes">
+            <thead>
+                <tr>
+                    <th class="thstyle">Nome</th>
+                    <th class="thstyle">CPF/CNPJ</th>
+                    <th class="thstyle">Endereço 1</th>
+                    <th class="thstyle">Endereço 2</th>
+                    <th class="thstyle">Telefone residencial</th>
+                    <th class="thstyle">Telefone comercial</th>
+                    <th class="thstyle">Email</th>
+                    <th class="thstyle">Descrição</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                    {% for Clientes in object_list %}
+                <tr>
+                    <td class="tdstyle">{{ Clientes.nome_CLIENTE }}</td>
+                    <td class="tdstyle">{{ Clientes.CPF_CNPJ_CLIENTE }}</td>
+                    <td class="tdstyle">{{ Clientes.endereco_1_CLIENTE }}</td>
+                    <td class="tdstyle">{{ Clientes.endereco_2_CLIENTE }}</td>
+                    <td class="tdstyle">{{ Clientes.contato_telefone_comercial_CLIENTE }}</td>
+                    <td class="tdstyle">{{ Clientes.contato_telefone_residencial_CLIENTE }}</td>
+                    <td class="tdstyle">{{ Clientes.contato_email_CLIENTE }}</td>
+                    <td class="tdstyle">{{ Clientes.descricao_CLIENTE }}</td>
+                    <td class="tdlink"><p>             </p></td>
+                    <td class="tdlink"><a href="{% url 'editar-cliente' Clientes.pk %}">EDITAR</a></td>
+                    <td class="tdlink"><p>             </p></td>
+                    <td class="tdlink"><a href="{% url 'excluir-cliente' Clientes.pk %}">EXCLUIR</a></td>
+                </tr>
+                    {% endfor %}
+            </tbody>
         </table>
-            <br/>
-            <br/>
-                {% endfor %}
+
+<!--    IMPORTAÇÃO JS-->
+    <script src="../static/js/jquery-3.6.0.min.js"></script>
+<!--    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.11.3/datatables.min.js"></script>-->
+    <script type="text/javascript" src="../static/js/DataTables/datatables.min.js"></script>
+
+            {% block scripts %}
+                <script>
+
+                    $(document).ready(function(){
+
+                        $("#tabela-clientes").DataTable({});
+
+                    });
+
+                </script>
+            {% endblock %}
+        <br/>
+        <br/>
+
         <br/>
         <a class="linkvoltar" href="../cadastro_de_clientes">Voltar</a>
     </div>
+
 
 </body>
 </html>

@@ -21,12 +21,15 @@
         <br/>
         <br/>
         <form action="" method="post">
+            {% csrf_token %}
+
+            {{ form.as_p }}
             <input class="inputSubmitRecuperar" type="submit" value="Sim, desejo.">
             &nbsp
             &nbsp
             &nbsp
             &nbsp
-            <a class="linkvoltar" href="../">Não, retornar</a>
+            <a class="linkvoltar" href="{% url 'controle-estoque' %}">Não, retornar</a>
         </form>
         <br/>
     </div>

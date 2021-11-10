@@ -19,20 +19,21 @@
         <h1 class="CADKlee_singup_title">Entre com os novos dados e clique em "Alterar"</h1>
         <br/>
         <br/>
-        <form action="" method="post">
+        <form method="post">{% csrf_token %}
+
             <label class="labeltextform">Nome:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
-            <input class="inputText" type="text" placeholder="Ensira o novo nome"><br/><br/>
+            <input class="inputText" type="text" placeholder="Ensira o novo nome" name="nome_PRODUTO"><br/><br/>
             <label class="labeltextform">Descrição:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
-            <input class="inputText" type="text" placeholder="Ensira a nova descrição"><br/><br/>
+            <input class="inputText" type="text" placeholder="Ensira a nova descrição" name="descricao_PRODUTO"><br/><br/>
             <label class="labeltextform">Código:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
-            <input class="inputText" type="text" placeholder="Ensira o novo código">
+            <input class="inputText" type="text" placeholder="Ensira o novo código" name="codigo_PRODUTO">
             &nbsp
             &nbsp
             &nbsp
             <input class="inputSubmit" type="submit" value="Alterar">
         </form>
         <br/>
-        <a class="linkvoltar" href="../controle_estoque">Voltar</a>
+        <a class="linkvoltar" href="{% url 'controle-estoque' %}">Voltar</a>
                 <br/>
         <br/>
         <br/>

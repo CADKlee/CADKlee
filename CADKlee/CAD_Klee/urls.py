@@ -19,7 +19,7 @@ urlpatterns = [
 
     path('pesquisa_de_cliente/',        PesquisarCliente.as_view(),         name='pesquisar-cliente'),
 
-    path('resultado_pesquisa_cliente/', ResultadoPesquisaCliente.as_view(), name='resultado-cliente'),
+    path('resultado_pesquisa_cliente/', ResultadoPesquisaCliente, name='resultado-cliente'),
 
     path('editar_cliente/<int:pk>/',     AlterarCliente.as_view(),           name='editar-cliente'),
 
@@ -33,13 +33,13 @@ urlpatterns = [
 
     path('adicionar_produto/',          IncluirProduto.as_view(),           name='incluir-produto'),
 
-    path('entrada_saida/',              EntradaSaidaEstoque.as_view(),      name='entrada-saida-estoque'),
+    path('entrada_saida/<int:pk>/',              EntradaSaidaEstoque.as_view(),      name='entrada-saida-estoque'),
 
     path('resultado_pesquisa_produto/', ResultadoPesquisaProduto.as_view(), name='resultado-produto'),
 
-    path('editar_produto/',             AlterarProduto.as_view(),           name='alterar-produto'),
+    path('editar_produto/<int:pk>/',             AlterarProduto.as_view(),           name='alterar-produto'),
 
-    path('confirmar_exclusao_produto/', ExcluirProduto.as_view(),           name='excluir-produto'),
+    path('confirmar_exclusao_produto/<int:pk>/', ExcluirProduto.as_view(),           name='excluir-produto'),
 
     path('perfil/',                     PerfilDoUsuario.as_view(),          name='perfil-usuario'),
 

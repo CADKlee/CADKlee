@@ -4,7 +4,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>CADKlee: Adicionar novo produto</title>
+    <title>CADKlee: Adicionar novo cliente</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="{% static 'css/cadkleecss.css' %}">
@@ -16,23 +16,56 @@
     </div>
 
     <div class="CADKlee_form_login">
-        <h1 class="CADKlee_singup_title">Incluir novo produto: </h1>
+        <h1 class="CADKlee_singup_title">Incluir novo cliente: </h1>
         <br/>
         <br/>
-        <form action="" method="post">
-            <label class="labeltextform">Nome:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
-            <input class="inputText" type="text" placeholder="Escreva aqui o nome do produto"><br/><br/>
-            <label class="labeltextform">Descrição:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
-            <input class="inputText" type="text" placeholder="Escreva aqui a descrição"><br/><br/>
-            <label class="labeltextform">Código:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
-            <input class="inputText" type="text" placeholder="O código do produto aqui (se tiver)">
+        <form method="post">{% csrf_token %}
+
+<!--            {{ form }}-->
+
+            {% for field in client_registration_form %}
+                <p>
+<!--                    {{field.label_tag}}-->
+<!--                    {{field}}-->
+
+                    {% if field.help_text %}
+                        <small style="color: grey;">{{field.help_text}}</small>
+                    {% endif %}
+
+                    {% for error in field.errors%}
+                        <p style="color: red;">{{error}}</p>
+                    {% endfor %}
+
+                    {% if client_registration_form.non_field_errors %}
+                        <div style="color:red;">
+                            <p>{{client_registration_form.non_field_errors}}</p>
+                        </div>
+                    {% endif %}
+                </p>
+            {% endfor %}
+
+            <label class="labeltextform">ID:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+            <input class="inputText" type="text" placeholder="Escreva aqui o ID"             name="id_PRODUTO"><br/><br/>
+
+            <label class="labeltextform">Nome:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+            <input class="inputText" type="text" placeholder="Escreva aqui o Nome"      name="nome_PRODUTO"><br/><br/>
+
+            <label class="labeltextform">Descrição:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+            <input class="inputText" type="text" placeholder="Escreva aqui a descrição"         name="descricao_PRODUTO"><br/><br/>
+
+            <label class="labeltextform">Código:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+            <input class="inputText" type="text" placeholder="Escreva aqui o código" name="codigo_PRODUTO"><br/><br/>
+
+            <label class="labeltextform">Quantidade:&nbsp&nbsp</label>
+            <input class="inputText" type="number" placeholder="Escreva aqui a quantidade"         name="quantidade_PRODUTO">
+
             &nbsp
             &nbsp
             &nbsp
             <input class="inputSubmit" type="submit" value="Incluir">
         </form>
         <br/>
-        <a class="linkvoltar" href="../controle_estoque/">Voltar</a>
+        <a class="linkvoltar" href="{% url 'controle-estoque' %}">Voltar</a>
                 <br/>
         <br/>
         <br/>
