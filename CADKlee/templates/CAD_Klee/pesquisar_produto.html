@@ -4,10 +4,15 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>CADKlee: Pesquisa de produto</title>
+    <title>CADKlee: Pesquisa de cliente</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="{% static 'css/cadkleecss.css' %}">
+
+<!--    IMPORÇÃO DATATABLES-->
+<!--    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.11.3/datatables.min.css"/>-->
+        <link rel="stylesheet" type="text/css" href="../static/css/DataTables/datatables.min.css"/>
+
 </head>
 <body>
 
@@ -16,21 +21,111 @@
     </div>
 
     <div class="CADKlee_form_login">
-        <h1 class="CADKlee_singup_title">Entre com o nome ou código do produto que deseja pesquisar no campo abaixo: </h1>
-        <p class="ptexto">Caso haja mais de um produto com o mesmo nome ou código ele aparecerá em tabelas diferentes.</p>
+        <h1 class="CADKlee_singup_title">Todos os clientes são listados de uma vez aqui, caso queira pesquisar aperte a tecla CTRL+F</h1>
+        <p class="ptexto">Basta apertar no seu teclado a tecla "Ctrl" mais a tecla com a letra "F" isso abre um campo de pesquisa do navegador para pesquisar elementos na página.</p>
         <br/>
         <br/>
-        <form action="" method="post">
-            <input class="inputTextPesquisa" type="text" placeholder="Nome/Código do produto aqui">
-            &nbsp
-            &nbsp
-            &nbsp
-            &nbsp
-            <input class="inputSubmitRecuperar" type="submit" value="Pesquisar"><br/><br/>
-        </form>
+<!--        <form method="get">{% csrf_token %}-->
+
+<!--            <input class="inputTextPesquisa" type="text" placeholder="Nome do cliente aqui" name="pesquisar">-->
+<!--            &nbsp-->
+<!--            &nbsp-->
+<!--            &nbsp-->
+<!--            &nbsp-->
+<!--            <input class="inputSubmitRecuperar" type="submit" value="Pesquisar">-->
+<!--            &nbsp-->
+<!--            &nbsp-->
+<!--            &nbsp-->
+<!--            &nbsp-->
+<!--            <a href="{% url 'pesquisar-cliente' %}">Limpar</a>-->
+<!--            <br/><br/>-->
+
+<!--&lt;!&ndash;            {% for clientes in queryset %}&ndash;&gt;-->
+
+<!--&lt;!&ndash;                <table class="tablestyle">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <th class="thstyle">Nome</th>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <th class="thstyle">CPF/CNPJ</th>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <th class="thstyle">Endereço 1</th>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <th class="thstyle">Endereço 2</th>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <th class="thstyle">Telefone residencial</th>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <th class="thstyle">Telefone comercial</th>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <th class="thstyle">Email</th>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <th class="thstyle">Descrição</th>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <td class="tdstyle">{{ Clientes.nome_CLIENTE }}</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <td class="tdstyle">{{ Clientes.CPF_CNPJ_CLIENTE }}</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <td class="tdstyle">{{ Clientes.endereco_1_CLIENTE }}</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <td class="tdstyle">{{ Clientes.endereco_2_CLIENTE }}</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <td class="tdstyle">{{ Clientes.contato_telefone_comercial_CLIENTE }}</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <td class="tdstyle">{{ Clientes.contato_telefone_residencial_CLIENTE }}</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <td class="tdstyle">{{ Clientes.contato_email_CLIENTE }}</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <td class="tdstyle">{{ Clientes.descricao_CLIENTE }}</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <td class="tdlink"><p>             </p></td>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <td class="tdlink"><a href="{% url 'editar-cliente' Clientes.pk %}">EDITAR</a></td>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <td class="tdlink"><p>             </p></td>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <td class="tdlink"><a href="{% url 'excluir-cliente' Clientes.pk %}">EXCLUIR</a></td>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                 </table>&ndash;&gt;-->
+<!--&lt;!&ndash;            {% endfor %}&ndash;&gt;-->
+<!--            <br/>-->
+<!--            <br/>-->
+<!--        </form>-->
+
+        <table class="tablestyle" id="tabela-clientes">
+            <thead>
+                <tr>
+                    <th class="thstyle">ID</th>
+                    <th class="thstyle">Nome do produto</th>
+                    <th class="thstyle">Descrição do produto</th>
+                    <th class="thstyle">Código do produto</th>
+                    <th class="thstyle">Quantidade</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                    {% for Produtos in object_list %}
+                <tr>
+                    <td class="tdstyle">{{ Produtos.id_PRODUTO }}</td>
+                    <td class="tdstyle">{{ Produtos.nome_PRODUTO }}</td>
+                    <td class="tdstyle">{{ Produtos.descricao_PRODUTO }}</td>
+                    <td class="tdstyle">{{ Produtos.codigo_PRODUTO }}</td>
+                    <td class="tdstyle">{{ Produtos.quantidade_PRODUTO }}</td>
+                    <td class="tdlink"><p>             </p></td>
+                    <td class="tdlink"><a href="{% url 'alterar-produto' Produtos.pk %}">EDITAR</a></td>
+                    <td class="tdlink"><p>             </p></td>
+                    <td class="tdlink"><a href="{% url 'excluir-produto' Produtos.pk %}">EXCLUIR</a></td>
+                    <td class="tdlink"><p>             </p></td>
+                    <td class="tdlink"><a href="{% url 'entrada-saida-estoque' Produtos.pk %}">QUANTIDADE</a></td>
+                </tr>
+                    {% endfor %}
+            </tbody>
+        </table>
+
+<!--    IMPORTAÇÃO JS-->
+    <script src="../static/js/jquery-3.6.0.min.js"></script>
+<!--    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.11.3/datatables.min.js"></script>-->
+    <script type="text/javascript" src="../static/js/DataTables/datatables.min.js"></script>
+
+            {% block scripts %}
+                <script>
+
+                    $(document).ready(function(){
+
+                        $("#tabela-clientes").DataTable({});
+
+                    });
+
+                </script>
+            {% endblock %}
         <br/>
-        <a class="linkvoltar" href="../controle_estoque">Voltar</a>
+        <br/>
+
+        <br/>
+        <a class="linkvoltar" href="{% url 'controle-estoque' %}">Voltar</a>
     </div>
+
 
 </body>
 </html>

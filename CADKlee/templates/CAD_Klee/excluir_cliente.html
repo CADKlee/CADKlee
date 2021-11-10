@@ -20,13 +20,16 @@
         <p class="ptexto">Se deseja clique em "Sim, desejo" para excluir permanentemente se não clique em "Não, retornar" para retornar a página inicial</p>
         <br/>
         <br/>
-        <form action="" method="post">
+        <form action="" method="post">{% csrf_token %}
+
+            {{ form.as_p }}
+
             <input class="inputSubmitRecuperar" type="submit" value="Sim, desejo.">
             &nbsp
             &nbsp
             &nbsp
             &nbsp
-            <a class="linkvoltar" href="../">Não, retornar</a>
+            <a class="linkvoltar" href="{% url 'pesquisar-cliente' %}">Não, retornar</a>
         </form>
         <br/>
     </div>

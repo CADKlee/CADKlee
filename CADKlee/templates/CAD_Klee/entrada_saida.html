@@ -19,22 +19,22 @@
         <h1 class="CADKlee_singup_title">Entrada e saída de estoque </h1>
         <br/>
         <br/>
-        <form action="" method="post">
+        <form action="" method="post">{% csrf_token %}
 
-            <h1 class="CADKlee_singup_title">Selecione um produto</h1>
-            <select name="cars" id="cars" class="inputSelecione">
-                <option value="selecione">Selecione</option>
-                <option value="saab">Saab</option>
-                <option value="opel">Opel</option>
-                <option value="audi">Audi</option>
-            </select>
-            <br/><br/>
-            <input class="inputQuantidade" type="number" placeholder="Quantidade">
+<!--            <h1 class="CADKlee_singup_title">Selecione um produto</h1>-->
+<!--            <select name="cars" id="cars" class="inputSelecione">-->
+<!--                <option value="selecione">Selecione</option>-->
+<!--                {% for results in Produtos %}-->
+<!--                <option value="{{ Produtos.nome_PRODUTO }}">{{ results.nome_PRODUTO }}</option>-->
+<!--                {% endfor %}-->
+<!--            </select>-->
+<!--            <br/><br/>-->
+            <input class="inputQuantidade" type="number" placeholder="Quantidade" name="quantidade_PRODUTO">
             &nbsp
             <input class="inputSubmitOK" type="submit" value="OK">
         </form>
         <br/>
-        <a class="linkvoltar" href="../controle_estoque/">Voltar</a>
+        <a class="linkvoltar" href="{% url 'pesquisa-produto' %}">Voltar</a>
                 <br/>
         <br/>
         <br/>
